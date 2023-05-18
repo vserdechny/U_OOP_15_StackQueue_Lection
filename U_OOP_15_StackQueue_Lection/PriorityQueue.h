@@ -21,12 +21,12 @@ public:
 	//Methods
 	//**********************************
 
-	//Returns true if the stack is empty
+	//Returns true if the queue is empty
 	bool is_empty()const
 	{
 		return _values.size() == 0;
 	}
-	//Returns size of the stack
+	//Returns size of the queue
 	size_t size()const
 	{
 		return _values.size();
@@ -61,14 +61,14 @@ public:
 	const Type& front()const
 	{
 		if (_values.size() == 0)
-			throw std::out_of_range("There is no values in the stack!");
+			throw std::out_of_range("There is no values in the queue!");
 		return _values.front().first;
 	}
 	//Returns the value at the tail of the queue
 	const Type& rear()const
 	{
 		if (_values.size() == 0)
-			throw std::out_of_range("There is no values in the stack!");
+			throw std::out_of_range("There is no values in the queue!");
 		return _values.back().first;
 	}
 };
