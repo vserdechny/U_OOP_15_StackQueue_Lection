@@ -29,13 +29,14 @@ int main()
 	//queue_def_test();
 	//p_queue_test();
 	//p_queue_def_test();
-	c_queue_test();
+	//c_queue_test();
 }
 
 void c_queue_test()
 {
 	CircularQueue<int> c_queue;
 
+	cout << "Enqueue 10 values [0,9]:\n";
 	for (int i = 0; i < 10; i++)
 		c_queue.enqueue(i);
 
@@ -43,22 +44,34 @@ void c_queue_test()
 	cout << "Head of the queue: " << c_queue.head() << endl;
 	cout << "Tail of the queue: " << c_queue.rear() << endl << endl;
 
-	c_queue.enqueue(10);
+	try
+	{
+		c_queue.enqueue(10);
+	}
+	catch (const std::out_of_range& ex)
+	{
+		cout << endl << ex.what() << endl << endl;
+	}
 
 	cout << "Size of the queue: " << c_queue.size() << endl;
 	cout << "Head of the queue: " << c_queue.head() << endl;
 	cout << "Tail of the queue: " << c_queue.rear() << endl << endl;
 
-	c_queue.enqueue(20);
+	cout << "Dequeue...\n";
+	for (size_t i = 0; i < 3; i++)
+		cout << "Value " << c_queue.dequeue() << " dequeued!\n";
 
-	cout << "Size of the queue: " << c_queue.size() << endl;
+	cout << "\nSize of the queue: " << c_queue.size() << endl;
 	cout << "Head of the queue: " << c_queue.head() << endl;
 	cout << "Tail of the queue: " << c_queue.rear() << endl << endl;
 
-	c_queue.dequeue();
-	c_queue.dequeue();
+	cout << "Enqueue 3 values [10,12]:\n";
+	for (int i = 10; i < 13; i++)
+		c_queue.enqueue(i);
 
-	cout << "Size of the queue: " << c_queue.size() << endl;
+	cout << "\nSize of the queue: " << c_queue.size() << endl;
+	cout << "Head of the queue: " << c_queue.head() << endl;
+	cout << "Tail of the queue: " << c_queue.rear() << endl << endl;
 }
 void p_queue_test()
 {

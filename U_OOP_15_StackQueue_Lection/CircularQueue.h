@@ -26,7 +26,12 @@ public:
 	//Returns size of the queue
 	size_t size()const
 	{
-		return (_head == -1) ? 0 : (_rear - _head + 1);
+		if (_head == -1)
+			return 0;
+		else if (_rear >= _head)
+			return _rear - _head + 1;
+		else
+			return _capacity - _head + _rear + 1;
 	}
 	//Inserts a new value and at the tail of the queue
 	void enqueue(const Type& value)
@@ -40,10 +45,14 @@ public:
 		{
 			_values[++_rear] = value;
 		}
-		else
+		else if (_rear == _capacity - 1 && _head != 0)
 		{
 			_rear = 0;
 			_values[_rear] = value;
+		}
+		else
+		{
+			throw std::out_of_range("Queue is full!");
 		}
 	}
 
